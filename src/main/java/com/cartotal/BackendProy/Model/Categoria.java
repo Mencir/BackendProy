@@ -8,16 +8,17 @@ import jakarta.validation.constraints.NotBlank;
 public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_categoria;
+    @Column(name = "id_categoria")
+    private Long idCategoria;
     @NotBlank(message = "El nombre no puede estar vacio")
     private String nombre;
 
-    public Long getId() {
-        return id_categoria;
+    public Long getIdCategoria() {
+        return idCategoria;
     }
 
-    public void setId(Long id) {
-        this.id_categoria = id;
+    public void setIdCategoria(Long idCategoria) {
+        this.idCategoria = idCategoria;
     }
 
     public String getNombre() {
