@@ -9,9 +9,10 @@ import java.time.LocalDate;
 public class CabeceraRecepcion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_recepcion;
-    @Column(nullable = false, unique = true)
-    private String numero_guia;
+    @Column(name = "id_recepcion")
+    private int idRecepcion;
+    @Column(nullable = false, unique = true, name = "numero_guia")
+    private String numeroGuia;
 
     private LocalDate fecha_recepcion;
     private String observaciones;
@@ -24,19 +25,19 @@ public class CabeceraRecepcion {
     private Usuario usuario;
 
     public int getId_recepcion() {
-        return id_recepcion;
+        return idRecepcion;
     }
 
     public void setId_recepcion(int id_recepcion) {
-        this.id_recepcion = id_recepcion;
+        this.idRecepcion = id_recepcion;
     }
 
     public String getNumero_guia() {
-        return numero_guia;
+        return numeroGuia;
     }
 
     public void setNumero_guia(String numero_guia) {
-        this.numero_guia = numero_guia;
+        this.numeroGuia = numero_guia;
     }
 
     public LocalDate getFecha_recepcion() {

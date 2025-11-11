@@ -1,33 +1,42 @@
 package com.cartotal.BackendProy.Model;
 
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "cabecera_salida")
 public class CabeceraSalida {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_salida;
+    @Column(name = "id_salida")
+    private int idSalida;
 
-    private LocalDate fecha_salida;
+    @Column(name = "fecha_salida", nullable = false)
+    private LocalDate fechaSalida;
+
+    @Column(name = "motivo", length = 255)
     private String motivo;
 
-    public int getId_salida() {
-        return id_salida;
+    @ManyToOne
+    @JoinColumn(name = "id_usuario", nullable = false)
+    private Usuario usuario;
+
+    // --- Getters y Setters ---
+    public int getIdSalida() {
+        return idSalida;
     }
 
-    public void setId_salida(int id_salida) {
-        this.id_salida = id_salida;
+    public void setIdSalida(int idSalida) {
+        this.idSalida = idSalida;
     }
 
-    public LocalDate getFecha_salida() {
-        return fecha_salida;
+    public LocalDate getFechaSalida() {
+        return fechaSalida;
     }
 
-    public void setFecha_salida(LocalDate fecha_salida) {
-        this.fecha_salida = fecha_salida;
+    public void setFechaSalida(LocalDate fechaSalida) {
+        this.fechaSalida = fechaSalida;
     }
 
     public String getMotivo() {
@@ -45,8 +54,4 @@ public class CabeceraSalida {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-
-    @ManyToOne
-    @JoinColumn(name = "id_usuario")
-    private Usuario usuario;
 }

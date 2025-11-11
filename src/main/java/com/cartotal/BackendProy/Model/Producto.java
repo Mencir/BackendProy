@@ -1,6 +1,5 @@
 package com.cartotal.BackendProy.Model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity
