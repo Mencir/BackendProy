@@ -1,5 +1,6 @@
 package com.cartotal.BackendProy.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -10,8 +11,9 @@ public class DetalleRecepcion {
     private int id_detalle_recepcion;
     @ManyToOne
     @JoinColumn(name = "id_recepcion", nullable = false)
+    @JsonBackReference
     private CabeceraRecepcion cabeceraRecepcion;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cod_bar", referencedColumnName = "cod_bar", nullable = false)
     private Producto producto;
 

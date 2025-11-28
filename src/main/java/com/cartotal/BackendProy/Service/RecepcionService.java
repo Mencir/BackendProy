@@ -51,8 +51,8 @@ public class RecepcionService {
             kardex.setProducto(producto);
             kardex.setCantidad(detalle.getCantidad());
             kardex.setPrecio_unitario(detalle.getPrecio_unitario().floatValue());
-            kardex.setId_referencia((long) savedCabecera.getId_recepcion());
-            kardex.setObservacion("Recepción N° " + savedCabecera.getNumero_guia());
+            kardex.setId_referencia((long) savedCabecera.getIdRecepcion());
+            kardex.setObservacion("Recepción N° " + savedCabecera.getNumeroGuia());
             kardexRepository.save(kardex);
         }
 
