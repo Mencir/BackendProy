@@ -72,8 +72,7 @@ public class SalidaService {
     }
 
     public CabeceraSalida obtenerPorId(Long id) {
-        return cabeceraSalidaRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Salida no encontrada con ID: " + id));
+        return cabeceraSalidaRepository.findByIdSalida(id);
     }
 
     public void eliminar(Long id) {

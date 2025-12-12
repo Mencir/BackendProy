@@ -1,10 +1,15 @@
 package com.cartotal.BackendProy.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "cabecera_salida")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+
 public class CabeceraSalida {
 
     @Id
@@ -21,6 +26,10 @@ public class CabeceraSalida {
     @ManyToOne
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
+
+    @OneToMany(mappedBy = "salida", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<DetalleSalida> detalles;
 
     // --- Getters y Setters ---
     public int getIdSalida() {
@@ -53,5 +62,13 @@ public class CabeceraSalida {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public List<DetalleSalida> getDetalles() {
+        return detalles;
+    }
+
+    public void setDetalles(List<DetalleSalida> detalles) {
+        this.detalles = detalles;
     }
 }

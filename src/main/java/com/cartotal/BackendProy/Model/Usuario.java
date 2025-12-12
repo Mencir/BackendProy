@@ -1,11 +1,18 @@
 package com.cartotal.BackendProy.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+
+import java.util.List;
+
 @Entity
 @Table(name = "usuario")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+
 public class Usuario {
 
     @Id
@@ -24,6 +31,18 @@ public class Usuario {
 
     @Column(name = "rol")
     private String rol;
+
+    public List<CabeceraSalida> getSalidas() {
+        return salidas;
+    }
+
+    public void setSalidas(List<CabeceraSalida> salidas) {
+        this.salidas = salidas;
+    }
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "usuario")
+    private List<CabeceraSalida> salidas;
 
     public Long getId_usuario() {
         return id_usuario;

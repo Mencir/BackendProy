@@ -28,6 +28,7 @@ public class SalidaController {
         return salidaService.listarSalidas();
     }
 
+
     // Obtener salida por ID
     @GetMapping("/{id}")
     public CabeceraSalida obtenerPorId(@PathVariable Long id) {

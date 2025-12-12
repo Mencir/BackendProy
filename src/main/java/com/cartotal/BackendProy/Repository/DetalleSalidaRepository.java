@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface DetalleSalidaRepository extends JpaRepository<DetalleSalida, Integer> {
+public interface DetalleSalidaRepository extends JpaRepository<DetalleSalida, Long> {
     List<DetalleSalida> findBySalida_IdSalida(int idSalida);
 }
