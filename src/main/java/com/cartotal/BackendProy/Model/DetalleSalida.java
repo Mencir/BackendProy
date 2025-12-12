@@ -1,14 +1,11 @@
 package com.cartotal.BackendProy.Model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "detalle_salida")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-
+@JsonIgnoreProperties(value = {"salida"}) // evita bucle y reemplaza el @JsonIgnore
 public class DetalleSalida {
 
     @Id
@@ -18,9 +15,7 @@ public class DetalleSalida {
 
     @ManyToOne
     @JoinColumn(name = "id_salida")
-    @JsonIgnore
     private CabeceraSalida salida;
-
 
     @ManyToOne
     @JoinColumn(name = "cod_bar", referencedColumnName = "cod_bar", nullable = false)
@@ -29,37 +24,17 @@ public class DetalleSalida {
     @Column(nullable = false)
     private Integer cantidad;
 
-    // ===== GETTERS & SETTERS =====
+    // Getters y Setters
+    public Long getIdDetalleSalida() { return idDetalleSalida; }
+    public void setIdDetalleSalida(Long idDetalleSalida) { this.idDetalleSalida = idDetalleSalida; }
 
-    public Long getIdDetalleSalida() {
-        return idDetalleSalida;
-    }
+    public CabeceraSalida getSalida() { return salida; }
+    public void setSalida(CabeceraSalida salida) { this.salida = salida; }
 
-    public void setIdDetalleSalida(Long idDetalleSalida) {
-        this.idDetalleSalida = idDetalleSalida;
-    }
+    public Producto getProducto() { return producto; }
+    public void setProducto(Producto producto) { this.producto = producto; }
 
-    public CabeceraSalida getSalida() {
-        return salida;
-    }
-
-    public void setSalida(CabeceraSalida salida) {
-        this.salida = salida;
-    }
-
-    public Producto getProducto() {
-        return producto;
-    }
-
-    public void setProducto(Producto producto) {
-        this.producto = producto;
-    }
-
-    public Integer getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
-    }
+    public Integer getCantidad() { return cantidad; }
+    public void setCantidad(Integer cantidad) { this.cantidad = cantidad; }
 }
+
