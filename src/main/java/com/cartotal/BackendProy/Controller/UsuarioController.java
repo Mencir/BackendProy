@@ -21,7 +21,10 @@ public class UsuarioController {
     public List<Usuario> listar() {
         return usuarioService.ListarUsuarios();
     }
-
+    @PutMapping("/{id}")
+    public Usuario actualizar(@PathVariable Long id, @RequestBody Usuario usuario) {
+        return usuarioService.actualizarUsuario(id, usuario);
+    }
     @PostMapping
     public Usuario crear(@RequestBody Usuario usuario) {
         return usuarioService.registrarUsuario(usuario);
